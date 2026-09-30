@@ -2,11 +2,18 @@
 
 CRUD web para gerenciamento de clientes, usado para demonstrar integração entre PHP, MySQL e interface web.
 
+[![Demo](https://img.shields.io/badge/DEMO-ABRIR-2563EB?style=for-the-badge&logo=github)](https://vinicius-calegari.github.io/CRUD/)
 ![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql&logoColor=white)
 ![CI](https://img.shields.io/github/actions/workflow/status/Vinicius-Calegari/CRUD/php-quality.yml?label=PHP%20syntax)
 
-## Funcionalidades
+## Demo pública
+
+O repositório inclui uma demonstração interativa em `demo/`, preparada para GitHub Pages. Ela reproduz criação, busca, edição e exclusão de clientes usando `localStorage`, permitindo testar a experiência sem provisionar um servidor PHP/MySQL.
+
+**Importante:** a demo é exclusivamente front-end e mantém os dados no navegador. O backend PHP/MySQL original continua neste repositório e é a implementação usada para demonstrar persistência em banco, prepared statements e integração servidor/banco.
+
+## Funcionalidades do projeto PHP/MySQL
 
 - cadastro, listagem, edição e exclusão de clientes
 - validação básica de entrada
@@ -40,6 +47,7 @@ editar.php      # atualização
 excluir.php     # exclusão
 db.php          # conexão
 barbearia.sql   # schema
+demo/           # versão demonstrativa para GitHub Pages
 ```
 
 ## Segurança e qualidade
