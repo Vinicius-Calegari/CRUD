@@ -1,46 +1,52 @@
-# CRUD de Clientes — PHP & MySQL
+# Gestão de Clientes — PHP & MySQL
 
-Aplicação web CRUD desenvolvida para praticar e demonstrar operações completas de persistência de dados com PHP e MySQL.
+CRUD web para gerenciamento de clientes, usado para demonstrar integração entre PHP, MySQL e interface web.
+
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql&logoColor=white)
+![CI](https://img.shields.io/github/actions/workflow/status/Vinicius-Calegari/CRUD/php-quality.yml?label=PHP%20syntax)
 
 ## Funcionalidades
 
-- Cadastro de registros
-- Listagem de dados
-- Edição de informações
-- Exclusão de registros
-- Integração com banco de dados MySQL
-- Interface com HTML, CSS e JavaScript
+- cadastro, listagem, edição e exclusão de clientes
+- validação básica de entrada
+- prepared statements nas operações que recebem dados do usuário
+- escaping de saída HTML para reduzir risco de XSS
+- configuração de banco via variáveis de ambiente
 
-## Tecnologias
+## Executar localmente
 
-- PHP
-- MySQL
-- HTML5
-- CSS3
-- JavaScript
+1. Importe `barbearia.sql` no MySQL.
+2. Defina as variáveis conforme `.env.example` no ambiente do servidor PHP.
+3. Inicie o projeto em PHP 8+.
 
-## Estrutura principal
+Variáveis esperadas:
 
-- `index.php` — interface e listagem
-- `cadastrar.php` — criação de registros
-- `editar.php` — atualização de registros
-- `excluir.php` — remoção de registros
-- `db.php` — conexão com o banco
-- `barbearia.sql` — estrutura inicial do banco de dados
-- `style.css` — estilos da aplicação
-- `script.js` — comportamento no cliente
+```text
+DB_HOST
+DB_USER
+DB_PASSWORD
+DB_NAME
+```
 
-## Como executar
+Há valores locais de desenvolvimento como fallback, mas credenciais reais não devem ser commitadas.
 
-1. Clone o repositório.
-2. Inicie PHP e MySQL em um ambiente local.
-3. Importe `barbearia.sql` no MySQL.
-4. Ajuste as credenciais de conexão em `db.php` conforme seu ambiente.
-5. Abra o projeto pelo servidor local.
+## Estrutura
 
-## Conceitos aplicados
+```text
+index.php       # interface e listagem
+cadastrar.php   # criação
+editar.php      # atualização
+excluir.php     # exclusão
+db.php          # conexão
+barbearia.sql   # schema
+```
 
-O projeto demonstra o ciclo CRUD — Create, Read, Update e Delete — além da integração entre uma interface web e um banco de dados relacional.
+## Segurança e qualidade
+
+As consultas de escrita usam prepared statements e a interface escapa dados vindos do banco antes de renderizá-los. O GitHub Actions executa `php -l` sobre os arquivos PHP em pushes e pull requests.
+
+> Este projeto é deliberadamente pequeno. Para produção, exclusões devem usar POST + proteção CSRF, além de autenticação/autorização e testes automatizados.
 
 ---
 
