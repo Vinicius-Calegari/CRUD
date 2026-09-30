@@ -1,11 +1,16 @@
 <?php
-include("db.php");
+require_once __DIR__ . '/db.php';
 
-$id = $_GET['id'];
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+if (!$id || $id < 1) {
+    header('Location: index.php?erro=Cliente inválido');
+    exit;
+}
 
-$sql = "DELETE FROM cliente WHERE ID = $id";
-$conn->query($sql);
+$stmt = $conn->prepare('DELETE FROM cliente WHERE ID = ?');
+$stmt->bind_param('i', $id);
+$stmt->execute();
+$stmt->close();
 
-header("Location: index.php");
+header('Location: index.php?sucesso=Cliente excluído');
 exit;
-?>
