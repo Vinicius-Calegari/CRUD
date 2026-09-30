@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Demo interativa do CRUD de clientes desenvolvido por Vinícius Calegari." />
+  <title>CRUD de Clientes | Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">PORTFÓLIO • DEMONSTRAÇÃO INTERATIVA</span>
+        <h1>CRUD de Clientes</h1>
+        <p>Interface demonstrativa do projeto PHP/MySQL. Nesta versão pública, os dados ficam somente no seu navegador via localStorage.</p>
+      </div>
+      <a class="github" href="https://github.com/Vinicius-Calegari/CRUD" target="_blank" rel="noreferrer">Ver código PHP/MySQL ↗</a>
+    </header>
+
+    <section class="metrics" aria-label="Resumo">
+      <article><strong id="total">0</strong><span>clientes</span></article>
+      <article><strong id="comEmail">0</strong><span>com e-mail</span></article>
+      <article><strong id="comTelefone">0</strong><span>com telefone</span></article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div><span class="step">01</span><h2 id="formTitle">Novo cliente</h2></div>
+        <button id="cancelEdit" class="ghost hidden" type="button">Cancelar edição</button>
+      </div>
+      <form id="clientForm" class="form">
+        <input id="editId" type="hidden" />
+        <label>Nome completo<input id="nome" required maxlength="100" placeholder="Ex.: Ana Souza" /></label>
+        <label>Data de nascimento<input id="nascimento" type="date" /></label>
+        <label>Telefone<input id="telefone" maxlength="20" placeholder="(35) 99999-9999" /></label>
+        <label>E-mail<input id="email" type="email" maxlength="120" placeholder="ana@email.com" /></label>
+        <label class="wide">Endereço<input id="endereco" maxlength="180" placeholder="Rua, número, bairro e cidade" /></label>
+        <label>Serviço preferido<input id="servico" maxlength="80" placeholder="Ex.: Corte" /></label>
+        <button class="primary" type="submit"><span id="submitText">Cadastrar cliente</span><span>→</span></button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title list-head">
+        <div><span class="step">02</span><h2>Clientes cadastrados</h2></div>
+        <div class="tools"><input id="search" type="search" placeholder="Buscar cliente..." /><button id="clearAll" class="danger-outline" type="button">Limpar demo</button></div>
+      </div>
+      <div id="empty" class="empty hidden">Nenhum cliente encontrado.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Cliente</th><th>Contato</th><th>Serviço</th><th>Nascimento</th><th>Ações</th></tr></thead>
+          <tbody id="clientRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>Demo front-end • Os dados não são enviados a nenhum servidor.</footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
